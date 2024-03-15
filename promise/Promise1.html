@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Промисы</title>
+    </head>
+    <body>
+        <h2>Промис</h2>
+
+        <script>
+            /*
+                Напишите функцию, которая принимает массив URL-адресов и возвращает массив без  https://, сделать с помощью промисов
+            */
+           let urlAray = [
+            "https://www.example.com",
+            "https://www.testsite.net",
+            "https://www.samplepage.com",
+            "https://www.demo-site.org",
+            "https://www.placeholderurl.com",
+            "https://www.tempwebsite.io",
+            "https://www.mockurl.biz",
+            "https://www.fakesite.co",
+            "https://www.dummylink.info",
+            "https://www.sandboxpage.net"
+            ];
+
+            //функция для сортировки массива
+            function SortUrl(arr) {
+                const len = arr.length;
+                let resultArr = [];
+                for(let i = 0; i< len; i++) {
+                    resultArr[i] = arr[i].replace(/^https:\/\//, '');
+                }
+                return resultArr;
+            }
+
+            //промис где вызываем функцию 
+            let prom = new Promise((resolve, reject) => {
+                let sortedArr;
+                setTimeout(()=> {
+                    resolve(sortedArr = SortUrl(urlAray));
+                }, 1000)
+            });
+
+            //конечный вывод ошибки или результата
+            prom.then(
+                result => {
+                    const len = result.length;
+                    for(let i = 0; i < len; i++) {
+                        console.log(i + " элемент: " + result[i]);
+                    }
+                },
+                error => {
+                    alert("Ошибка!");
+                }
+            )
+        </script>
+    </body>
+</html>

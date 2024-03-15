@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Замыкания</title>
+    </head>
+    <body>
+        <h2>Замыкания</h2>
+
+        <h3>Введите длинну массива </h3>
+        <input type="number" placeholder="Введите число" id="lenghtArray">
+        <button onclick="AddForClick()">Заполнить и вывести</button>
+
+        <script>
+            /*
+                Напишите функцию, которая принимает число в качестве аргумента и возвращает функцию, 
+                которая также принимает число в качестве аргумента и возвращает сумму обоих чисел.
+            */
+            var lenghtArray = document.getElementById('lenghtArray');
+            let funcArray = [];
+
+            function AddForClick() {
+                const lengthArr = parseInt(lenghtArray.value);
+                for(let i = 0; i < lengthArr; i++) {
+                    funcArray.push(function() { return i; });
+                    console.log("Функция: " + funcArray[i]())
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //Стэк и очередь!
+
+            //Игра в пьяницу
+
+            //две очереди
+            player1 = []
+            player2 = []
+
+            //номиналы карт
+            cardsNominals = [0,1,2,3,4,5,6,7,8,9]
+            //Колода
+            cardColod = []
+
+            //функция для сортировки карт в колоду
+            function CardsSort(arr) {
+                let newArr = arr.concat(arr,arr,arr)
+                return newArr.sort(() => Math.random() - 0.5); 
+            }
+
+            cardColod = CardsSort(cardsNominals);
+
+            //раздаём карты игрокам
+            player1 = cardColod.slice(0, cardColod.length/2)
+            player2 = cardColod.slice(cardColod.length/2, cardColod.length)
+
+            GameProcess(player1, player2)
+            //создаём функцию самой игры
+            function GameProcess(cards1, cards2) {
+                //нужно брать карты с конца для сравнения, а добавлять в начало
+                let check = CheckPlayers(cards1, cards2);
+                if(check != true) {
+                    CheckCards(cards1, cards2)
+                    GameProcess(cards1, cards2)
+                } else {
+                    console.log("Игра закончена!")
+                }
+            }
+            //функция сравнения и добавления карт в колоду 
+            function CheckCards(cards1, cards2, cardBank = []) {
+                //забираем в эту переменную верхние карты и колод игроков
+                let roundCards = {
+                    //то что сравниваем
+                    cardPlayer1: 0,
+                    cardPlayer2: 0,
+                }
+                roundCards.cardPlayer1 = cards1[cards1.length - 1];
+                cards1.length = cards1.length - 1;
+                roundCards.cardPlayer2 = cards2[cards2.length - 1];
+                cards2.length = cards2.length - 1;
+
+                //выиграл 1 игрок
+                if(roundCards.cardPlayer1 > roundCards.cardPlayer2) {
+                    cards1.unshift(roundCards.cardPlayer1)
+                    cards1.unshift(roundCards.cardPlayer2)
+                    if(cardBank.length > 0) {
+                        for (let i = cardBank.length - 1; i >= 0; i--) {
+                            cards1.unshift(cardBank[i])
+                        }
+                    }
+                } 
+                //выиграл 2 игрок
+                else if(roundCards.cardPlayer1 < roundCards.cardPlayer2) {
+                    cards2.unshift(roundCards.cardPlayer2)
+                    cards2.unshift(roundCards.cardPlayer1)
+                    if(cardBank.length > 0) {
+                        for (let i = cardBank.length - 1; i >= 0; i--) {
+                            cards2.unshift(cardBank[i])
+                        }
+                    }
+                }
+                //на случай ничьи 
+                else if(roundCards.cardPlayer1 == roundCards.cardPlayer2) {
+                    cardBank.push(roundCards.cardPlayer1);
+                    cardBank.push(roundCards.cardPlayer2);
+                    CheckCards(cards1, cards2, cardBank)
+                }
+            }
+
+            //показывает кто победил, а кто нет
+            function LogWinner(index) {
+                if(index == 0) {
+                    console.log("Победил игрок 1 !!!")
+                } else {
+                    console.log("Победил игрок 2 !!!")
+                }
+            }
+
+            //проверка длинн колод игроков
+            function CheckPlayers(cads1, cards2) {
+                if(cads1.length == 0) {
+                    LogWinner(1)
+                    return true;
+                }
+                else if(cards2.length == 0) {
+                    LogWinner(0)
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>

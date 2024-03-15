@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Замыкания</title>
+    </head>
+    <body>
+        <h2>Замыкания</h2>
+
+        <h3>Введи 2 числа для сложения: </h3>
+        <input type="number" placeholder="Введите число" id="number1">
+        <input type="number" placeholder="Введите число" id="number2">
+        <button onclick="additionForClick()">Считать</button>
+
+                <script>
+            var number1 = document.getElementById('number1');
+            var number2 = document.getElementById('number2');
+            var result;
+
+            function additionNumbers(x) {
+                return function(y) {
+                    return x+y;
+                }
+            }
+
+            /*
+            function additionForClick() {
+                result = additionNumbers(number1);
+                console.log(result(number2));
+            }
+            */
+           function additionForClick() {
+                if (number1.value && number2.value) {
+                    //Функция parseInt()анализирует строковый аргумент и возвращает целое число указанного основания
+                    result = additionNumbers(parseInt(number1.value));
+                    console.log(result(parseInt(number2.value)));
+                } else {
+                    console.log('Пожалуйста, введите оба числа');
+                }
+            }
+        </script>
+    </body>
+</html>

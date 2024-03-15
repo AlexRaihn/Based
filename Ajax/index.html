@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Ajax</title>
+    </head>
+    <body>
+        <h3>Ajax запросы</h3>
+        
+        <script>
+            const request = new XMLHttpRequest();
+            request.onload = (event) => {
+                console.log(request)
+            };
+            request.open("GET", "https://readmanga.live/bashnia_boga__A35c96");
+            request.setRequestHeader("Accept", "text/plain");
+            request.send()
+        </script>
+    </body>
+</html>

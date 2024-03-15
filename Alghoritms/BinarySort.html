@@ -1,0 +1,77 @@
+<script>
+//Алгоритм бинарного поиска(выбора)
+//пример, есть массив, нужно найти ключ, который вводит пользователь и по нему вывести название продукта. 
+products = [
+    {
+        id: 0,
+        name: "Молоко"
+    },
+    {
+        id: 1,
+        name: "Сырки"
+    },
+    {
+        id: 2,
+        name: "Сыр"
+    },
+    {
+        id: 3,
+        name: "Хлеб"
+    },
+    {
+        id: 4,
+        name: "Перец"
+    },
+    {
+        id: 5,
+        name: "Лапша"
+    },
+    {
+        id: 6,
+        name: "Дыня"
+    }
+]
+//проверка того что вводит пользователь
+function TakeKey() {
+    let num = prompt('Введите id продукта от 0 до ' + products.length, );
+    if((num > products.length) || (num < 0) || (isNaN(num))) {
+        //если ввёл неверно, просим ввести ещё раз
+        let result = confirm("Ошибка! Попробуйте ещё раз!");
+        if(result == true) {
+            TakeKey()
+        }
+    } else {
+        alert("Начинаю поиск!")
+        AverageItem(num)
+    }
+}
+function AverageItem(indexItem) {
+    //для начала находим среднее значение id 
+    let len = products.length
+    if(len % 2 == 1) {
+        len = (len / 2) - 0.5;
+
+    } else {
+        len = len / 2;
+    }
+    if(len < indexItem) {
+        let itemArr = products.splice(len)
+        SearcInArr(itemArr, indexItem)
+    } else {
+        let itemArr = products.splice(0, len)
+        SearcInArr(itemArr, indexItem)
+    }
+}
+//поиск элемента по индексу
+function SearcInArr(Arr, index) {
+    const len = Arr.length;
+    for(let i = 0; i<len; i++) {
+        if(Arr[i].id == index) {
+            alert("Элемент найден: " + Arr[i].name);
+            break;
+        }
+    }
+}
+
+TakeKey()
+</script>

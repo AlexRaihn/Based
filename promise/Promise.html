@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Промисы</title>
+    </head>
+    <body>
+        <h2>Промис</h2>
+
+        <script>
+            var prom = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let rand = Math.floor(Math.random() * 10) + 1;
+                    resolve(rand);
+                }, 3000);
+
+            })
+            prom
+                .then(
+                    result => {
+                    // первая функция-обработчик - запустится при вызове resolve
+                    alert(result); // result - аргумент resolve
+                    },
+                    error => {
+                    // вторая функция - запустится при вызове reject
+                    alert("Rejected: " + error); // error - аргумент reject
+                    }
+                );
+        </script>
+    </body>
+</html>

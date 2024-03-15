@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Замыкания</title>
+    </head>
+    <body>
+        <h2>Замыкания</h2>
+
+        <h3>Введите числа через пробел</h3>
+        <input type="text" placeholder="Введите числа" id="lenghtArray">
+        <button onclick="ConstructionArr()">Заполнить и вывести</button>
+
+        <script>
+            /*
+                Создайте функцию, которая принимает массив чисел и возвращает новый массив, содержащий квадраты этих чисел.
+            */
+            function ConstructionArr() {
+                var input = document.getElementById('lenghtArray').value;
+                var arr = input.split(/\s+/);
+                
+                const len = arr.length;
+                let copyArr = [];
+
+                for (let i = 0; i < len; i++) {
+                    arr[i] = parseInt(arr[i]);
+                    copyArr[i] = function() {
+                        return arr[i] * arr[i];
+                    };
+                    console.log("Квадрат " + arr[i] + "=" + copyArr[i]());
+                }
+            }
+        </script>
+    </body>
+</html>

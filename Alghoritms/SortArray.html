@@ -1,0 +1,178 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //сортировка пузырьком
+            // let newArray = [2, 7, 3, 6, 1, 5 ];
+
+            // function bubbleSort(arr) {
+            //     for(let j = arr.length - 1; j > 0; j--) {
+            //         for(let i = 0; i < j; i++) {
+            //             if (arr[i] > arr[i+1]) {
+            //                 let item = arr[i+1]
+            //                 arr[i+1] = arr[i];
+            //                 arr[i] = item;
+            //             }
+            //         }
+            //     }
+            // }
+            // bubbleSort(newArray);
+            // console.log(newArray);
+
+            //Преобразование массива в строку
+            // var vegetables = ['Капуста', 'Репа', 'Редиска', 'Морковка'];
+
+            // function ArrOnStr(arr) {
+            //     let str = '';
+            //     const len = arr.length;
+
+            //     for(let i =0; i<len; i++) {
+            //         if(i > 0) {
+            //             str = str + ' ' + arr[i]
+            //         } else {
+            //             str = str + arr[i]
+            //         }
+            //     }
+            //     console.log(str)
+            // }
+
+            // ArrOnStr(vegetables);
+
+            //3. Двоеточие между нечётными числами
+            // let num = prompt('Введите число', 55639217);
+            // function colonOdd (num) {
+            //     const len = num.length;
+            //     num = String(num);
+            //     newNum = '';
+            //     for(let i = 0; i < len; i++) {
+            //         let ifOdd = Number(num[i]);
+            //         let ifOdd2 = Number(num[i+1])
+            //         if((ifOdd % 2 != 0) && (ifOdd2 % 2 != 0)) {
+            //             if(i < len-1) {
+            //                 newNum += num[i] + ':';
+            //             } else {
+            //                 newNum +=  num[i];
+            //             }
+            //         } else {
+            //             newNum +=  num[i];
+            //         }
+            //     }
+            //     console.log(newNum);
+            // }
+            // colonOdd(num);
+
+            //4. Замена регистра символов
+            // const str = prompt('Введите слово', 'КаЖдЫй ОхОтНиК');
+
+            // function changeRegister (str) { 
+            //     result = []
+            //     const len = str.length;
+            //     for(let i = 0; i < len; i++) {
+            //         let uppCase = str[i].toUpperCase()
+            //         if(str[i] == uppCase) {
+            //             result[i] = str[i].toLowerCase();
+            //         } else {
+            //             result[i] = uppCase
+            //             continue;
+            //         }
+            //     }
+            //     return result.join('');
+            // }
+            // let res;
+            // console.log(res = changeRegister(str));
+
+            //5. Удалить повторяющиеся элементы массива
+
+            // let arr = ["php", "css", "php", "html", "script", "script", "css", "html", "java"];
+            // let itog = []
+
+            // function removeDuplicates(arr1,  newArr, index, counItem) {
+            //     if(index < arr1.length) {
+            //         counItem = arr1[index];
+            //         arr1 = RecurseDropItem(arr1, counItem)
+            //         newArr.push(counItem)
+            //         removeDuplicates(arr1,  newArr, index++, arr1[index])
+            //     } else {
+            //         console.log(newArr);
+
+            //     }
+            // }
+            // function RecurseDropItem(arr2, counItem) {
+            //     newArr2 = []
+            //     for(let j = 0; j < arr2.length; j++) {
+            //             if((counItem != arr2[j])&&(arr2[j] != "+")) {
+            //                 newArr2.push(arr2[j])
+            //             } else {
+            //                 arr2[j] = "+"
+            //             }
+            //     }
+            //     return newArr2
+            // }
+
+            // removeDuplicates(arr, itog, 0, arr[0]);
+
+            // //11. Количество повторяющихся элементов в массиве
+            // function countIdentic(arr) {
+            //     newArr = []
+            //     usedItems = []
+            //     //будем сохрать данные строкой: 1 в кол-ве: 3
+            //     const len = arr.length;
+            //     let countItem;
+
+            //     for(let i = 0; i < len; i++) {
+            //         let trueItem = false;
+            //         countItem = arr[i]
+            //         //проверяем есть ли такое число уже в массиве пройденных чисел или нет
+            //         for(let j = 0; j <= usedItems.length; j++) {
+            //             if(usedItems[j] == countItem) {
+            //                 trueItem = false;
+            //                 break;
+            //             } else {
+            //                 trueItem = true;
+            //             }
+            //         }
+            //         //если нет, то добавляем
+            //         if(trueItem == true) {
+            //             //добавляем в массив подсчитанных
+            //             let funcCounter = CounterItems(countItem, arr);
+            //             newArr.push(funcCounter);
+            //             //и в массив чисел которые были пройдены
+            //             usedItems.push(countItem);
+            //         }
+            //     }
+            //     console.log(newArr)
+            // }
+            // function CounterItems(item, items) {
+            //     let count = 0;
+            //     for(let i = 0; i<items.length; i++) {
+            //         if(items[i] == item) {
+            //             count++
+            //         }
+            //     }
+            //     return  item+" в кол-ве: "+count
+            // }
+
+            // countIdentic([3, 3, 7, 7, 3, 3, 4, 5, 5, 8, 8, 8]) // 4
+            // countIdentic([15,14,13,19,13,14,14,14,7,9,9]) // 3 
+
+            //Разворачивание массива массивов
+
+            //НЕ МОЁ РЕШЕНИЕ!
+            // function expand(arr) {
+            //     let i = 0;
+            //     while(i < arr.length) {
+            //         arr = arr.reduce(function(a, b) {
+            //             return a.concat(b);
+            //         },[]);
+            //         i++;
+            //     }
+            //     return arr
+            // }
+
+            // console.log(expand(arr1)); // 1,2,3,4
+            // console.log(expand(arr2)); // 1,2,3,4,5,6
+        </script>
+    </body>
+</html>
